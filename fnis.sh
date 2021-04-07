@@ -6,6 +6,7 @@ parted /dev/sda -- mkpart primary 512MiB "-${swap_size}GiB"
 parted /dev/sda -- mkpart primary linux-swap "-${swap_size}GiB" 100%
 parted /dev/sda -- mkpart ESP fat32 1MiB 512MiB
 parted /dev/sda -- set 3 esp on
+unset swap_size
 
 echo "Formatting..."
 mkfs.ext4 -L nixos /dev/sda1
@@ -20,5 +21,5 @@ swapon /dev/sda2
 
 echo "entering devshell"
 cd /iso/devos
+echo "after entering devos, type in \"flk install host-name --impure\" to install a host"
 nix develop
-echo "enter \"flk install host-name --impure\" to install a host"
