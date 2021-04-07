@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "remote script run successfully"
+parted /dev/sda -- mklabel gpt
+echo "partitioned"
