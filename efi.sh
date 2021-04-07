@@ -17,3 +17,8 @@ mount /dev/disk/by-label/nixos /mnt
 mkdir -p /mnt/boot
 mount /dev/disk/by-label/boot /mnt/boot
 swapon /dev/sda2
+
+echo "entering devshell"
+cd /iso/devos
+nix develop
+echo "enter \"flk install host-name --impure\" to install a host"
